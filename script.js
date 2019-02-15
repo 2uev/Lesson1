@@ -53,3 +53,4 @@ Menu.prototype.render = function(){                  // rendering new element + 
 
 var menu = new Menu("my_menu", "My_class", m_items); // insert new element to <BODY>
 var div = document.write(menu.render());
+
