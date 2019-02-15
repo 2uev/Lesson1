@@ -32,9 +32,9 @@ function MenuItem(my_href, my_name){                 // Teamplate for Create new
 MenuItem.prototype = Object.create(Container.prototype);
 MenuItem.prototype.constructor = MenuItem;
 MenuItem.prototype.render = function(){
-    return "<li class='"+this.className+"' href='"+ this.href +"'>" + this.itemName + "</li>";
+    return "<li class='"+this.className+"'><a href='"+ this.href +"'>" + this.itemName + "</a></li>";
 }
-var m_item1 = new MenuItem("/", "Главная");
+var m_item1 = new MenuItem("#", "Главная");
 var m_item2 = new MenuItem("/catalogue/", "Каталог");
 var m_item3 = new MenuItem("/gallery/", "Галерея");
 var m_items = {0: m_item1, 1: m_item2, 2: m_item3};
@@ -49,6 +49,7 @@ Menu.prototype.render = function(){                  // rendering new element + 
     result += "</ul>";
     return result;
 }
+
 
 
 
