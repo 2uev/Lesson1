@@ -26,10 +26,8 @@ function MenuItem(my_href, my_name){                 // Teamplate for Create new
     Container.call(this);
     this.className = "menu-item";
     this.href = my_href;
-    this.name = my_name;
+    this.itemName = my_name;
 }
-
-function remove
 
 MenuItem.prototype = Object.create(Container.prototype);
 MenuItem.prototype.constructor = MenuItem;
@@ -52,6 +50,9 @@ Menu.prototype.render = function(){                  // rendering new element + 
     return result;
 }
 
+
+
 var menu = new Menu("my_menu", "My_class", m_items); // insert new element to <BODY>
 var div = document.write(menu.render());
+
 
