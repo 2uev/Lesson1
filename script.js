@@ -20,7 +20,7 @@ Menu.prototype.constructor = Menu;
 Menu.prototype.render = function(){                  // override function render to output on screen
 }
 var menu = new Menu("my_menu", "menu_class", {});    //
-console.log(menu.render());
+
 
 function MenuItem(my_href, my_name){                 // Teamplate for Create new 'Menu Item'
     Container.call(this);
@@ -51,9 +51,10 @@ Menu.prototype.render = function(){                  // rendering new element + 
 }
 
 
-
-
 var menu = new Menu("my_menu", "My_class", m_items); // insert new element to <BODY>
 var div = document.write(menu.render());
 
 
+
+var del = menu.render();
+console.log(del);
