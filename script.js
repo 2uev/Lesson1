@@ -9,6 +9,7 @@ Container.prototype.render = function()              // function render return H
     return this.htmlCode;
 }
 
+
 function Menu(my_id, my_class, my_items){
     Container.call(this);
     this.id = my_id;
@@ -50,11 +51,5 @@ Menu.prototype.render = function(){                  // rendering new element + 
     return result;
 }
 
-
 var menu = new Menu("my_menu", "My_class", m_items); // insert new element to <BODY>
 var div = document.write(menu.render());
-
-
-
-var del = menu.render();
-console.log(del);
