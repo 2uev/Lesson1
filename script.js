@@ -22,16 +22,6 @@ Menu.prototype.constructor = Menu;
 Menu.prototype.render = function(){                  // override function render to output on screen
 }
 
-function SubMenu(my_class, my_id, my_items) {
-    Container.call(this);
-    this.className = my_class;
-    this.id = my_id;
-    this.items = my_items;
-}
-SubMenu.render = function(){
-
-}
-
 // let menu = new Menu("menu_class", "menu_id", {});    //
 
 function MenuItem(my_href, my_name, my_id){                 // Teamplate for Create new 'Menu Item'
@@ -47,6 +37,7 @@ MenuItem.prototype.constructor = MenuItem;
 MenuItem.prototype.render = function(){
     return "<li class='"+this.className+"' id='"+this.id+"'><a href='"+ this.href +"'>" + this.itemName + "</a></li>";
 }
+
 var m_item1 = new MenuItem("#", "Главная", "main");
 var m_item2 = new MenuItem("/catalogue/", "Каталог", "list");
 var m_item3 = new MenuItem("/gallery/", "Галерея", "gallery");
@@ -70,11 +61,13 @@ Menu.prototype.render = function(){                  // rendering new element + 
                                                      // insert new element to <BODY> + parameters
 var menu = new Menu("main_menu", "menu", m_items);
 var div = document.write(menu.render());
-
-var subMenu = new SubMenu("sub_menu", "slave_menu", sm_items);
-var newLi = main.insert
-
-/*DeleteElement = function(my_id) {                    // remove element by 'id'
+                                                     // insert sub menu to main menu
+var subMenu = new Menu("sub_menu", "list_menu", sm_items);
+var smenu = document.createElement('div');
+smenu.innerHTML = subMenu.render();
+list.appendChild(smenu);                             // write here where you want put sub menu
+                                                     // remove element by 'id'
+/*DeleteElement = function(my_id) {
     let elem = document.getElementById(my_id);
     elem.remove();
 }
