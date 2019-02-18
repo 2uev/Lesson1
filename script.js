@@ -4,6 +4,7 @@ function Container()
     this.className= "";
     this.htmlCode = "";
 }
+
 Container.prototype.render = function()              // function render return HTML
 {
     return this.htmlCode;
@@ -22,22 +23,22 @@ Menu.prototype.render = function(){                  // override function render
 }
 var menu = new Menu("my_menu", "menu_class", {});    //
 
-
-function MenuItem(my_href, my_name){                 // Teamplate for Create new 'Menu Item'
+function MenuItem(my_href, my_name, my_id){                 // Teamplate for Create new 'Menu Item'
     Container.call(this);
     this.className = "menu-item";
     this.href = my_href;
     this.itemName = my_name;
+    this.id = my_id;
 }
 
 MenuItem.prototype = Object.create(Container.prototype);
 MenuItem.prototype.constructor = MenuItem;
 MenuItem.prototype.render = function(){
-    return "<li class='"+this.className+"'><a href='"+ this.href +"'>" + this.itemName + "</a></li>";
+    return "<li class='"+this.className+"' id='"+this.id+"'><a href='"+ this.href +"'>" + this.itemName + "</a></li>";
 }
-var m_item1 = new MenuItem("#", "Главная");
-var m_item2 = new MenuItem("/catalogue/", "Каталог");
-var m_item3 = new MenuItem("/gallery/", "Галерея");
+var m_item1 = new MenuItem("#", "Главная", "main");
+var m_item2 = new MenuItem("/catalogue/", "Каталог", "list");
+var m_item3 = new MenuItem("/gallery/", "Галерея", "gallery");
 var m_items = {0: m_item1, 1: m_item2, 2: m_item3};
 
 Menu.prototype.render = function(){                  // rendering new element + for...in
@@ -50,7 +51,14 @@ Menu.prototype.render = function(){                  // rendering new element + 
     result += "</ul>";
     return result;
 }
-
-var menu = new Menu("my_menu", "My_class", m_items); // insert new element to <BODY>
+                                                     // insert new element to <BODY>
+var menu = new Menu("my_menu", "My_class", m_items);
 var div = document.write(menu.render());
+
+DeleteElement = function(my_id) {                    // remove element by 'id'
+    let elem = document.getElementById(my_id);
+    elem.remove();
+}
+                                                     // insert element 'id' to delete them
+DeleteElement('gallery');
 
